@@ -20,5 +20,8 @@
   },
   "engines": {
     "node": "18"
+  },
+  "pkg": {
+    "assets": "node_modules/puppeteer-extra-plugin-stealth/**/*.*"
   }
 }
