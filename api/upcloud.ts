@@ -40,7 +40,7 @@ export default async (req: any, res: any) => {
     })
   }
   
-  const browser = await puppeteer.launch({
+  browser = await puppeteer.launch({
       args: chrome.args,
       defaultViewport: chrome.defaultViewport,
       executablePath: await chrome.executablePath(),
