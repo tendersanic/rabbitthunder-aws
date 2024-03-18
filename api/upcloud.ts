@@ -30,7 +30,7 @@ export default async (req: any, res: any) => {
       args: chrome.args,
       defaultViewport: chrome.defaultViewport,
       executablePath: await chrome.executablePath(),
-      headless: 'new',
+      headless: true,
       ignoreHTTPSErrors: true
     })
   } else {
@@ -39,14 +39,6 @@ export default async (req: any, res: any) => {
       executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     })
   }
-  
-  browser = await puppeteer.launch({
-      args: chrome.args,
-      defaultViewport: chrome.defaultViewport,
-      executablePath: await chrome.executablePath(),
-      headless:true,
-      ignoreHTTPSErrors: true,
-  });
   const page = await browser.newPage();
   await page.setRequestInterception(true);
 
