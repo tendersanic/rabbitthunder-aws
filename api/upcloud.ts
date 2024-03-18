@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer-extra');
 const chrome = require('@sparticuz/chromium');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+// const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 export default async (req: any, res: any) => {
-  puppeteer.use(StealthPlugin())
+  // puppeteer.use(StealthPlugin())
   let {body,method} = req
 
   // Some header shits
