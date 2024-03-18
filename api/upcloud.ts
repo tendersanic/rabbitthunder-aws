@@ -42,7 +42,9 @@ export default async (req: any, res: any) => {
 
   // Some checks...
   if (!body) return res.status(400).end(`No body provided`)
-  if (typeof body === 'object' && !body.url) return res.status(400).end(`No url provided`)
+  if (typeof body === 'object' && !body.id) return res.status(400).end(`No url provided`)
+  
+  const id = body.id;
   const isProd = process.env.NODE_ENV === 'production'
 
   // create browser based on ENV
@@ -57,7 +59,7 @@ export default async (req: any, res: any) => {
     })
   } else {
     browser = await puppeteer.launch({
-      headless: 'new',
+      headless: true,
       executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     })
   }
@@ -81,7 +83,7 @@ export default async (req: any, res: any) => {
   try {
     const [req] = await Promise.all([
       page.waitForRequest(req => req.url().includes('.m3u8'), { timeout: 30000 }),
-      page.goto('https://rabbitstream.net/v2/embed-4/J8fjXoGMl7rw?z=&_debug=true', { waitUntil: 'domcontentloaded' }),
+      page.goto(`https://rabbitstream.net/v2/embed-4/${id}?z=&_debug=true`, { waitUntil: 'domcontentloaded' }),
     ]);
   } catch (error) {
     return res.status(500).end(`Server Error,check the params.`)
