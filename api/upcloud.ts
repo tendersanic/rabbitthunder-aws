@@ -98,5 +98,6 @@ export default async (req: any, res: any) => {
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
+  console.log(finalResponse);
   res.json(finalResponse);
 };
