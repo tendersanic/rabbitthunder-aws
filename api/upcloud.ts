@@ -1,14 +1,31 @@
 const puppeteer = require('puppeteer-extra');
 const chrome = require('@sparticuz/chromium');
-// Add the Imports before StealthPlugin
+
+// Stealth plugin issue - There is a good fix but currently this works.
 require('puppeteer-extra-plugin-user-data-dir')
 require('puppeteer-extra-plugin-user-preferences')
 require('puppeteer-extra-plugin-stealth/evasions/chrome.app')
+require('puppeteer-extra-plugin-stealth/evasions/chrome.csi')
+require('puppeteer-extra-plugin-stealth/evasions/chrome.loadTimes')
+require('puppeteer-extra-plugin-stealth/evasions/chrome.runtime')
+require('puppeteer-extra-plugin-stealth/evasions/defaultArgs') // pkg warned me this one was missing
+require('puppeteer-extra-plugin-stealth/evasions/iframe.contentWindow')
+require('puppeteer-extra-plugin-stealth/evasions/media.codecs')
+require('puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency')
+require('puppeteer-extra-plugin-stealth/evasions/navigator.languages')
+require('puppeteer-extra-plugin-stealth/evasions/navigator.permissions')
+require('puppeteer-extra-plugin-stealth/evasions/navigator.plugins')
+require('puppeteer-extra-plugin-stealth/evasions/navigator.vendor')
+require('puppeteer-extra-plugin-stealth/evasions/navigator.webdriver')
+require('puppeteer-extra-plugin-stealth/evasions/sourceurl')
+require('puppeteer-extra-plugin-stealth/evasions/user-agent-override')
+require('puppeteer-extra-plugin-stealth/evasions/webgl.vendor')
+require('puppeteer-extra-plugin-stealth/evasions/window.outerdimensions')
 
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
+
 export default async (req: any, res: any) => {
-  // puppeteer.use(StealthPlugin())
   let {body,method} = req
 
   // Some header shits
