@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-extra');
 const chrome = require('@sparticuz/chromium');
 // Add the Imports before StealthPlugin
+require('puppeteer-extra-plugin-user-preferences')
 require('puppeteer-extra-plugin-stealth/evasions/chrome.app')
 require('puppeteer-extra-plugin-stealth/evasions/chrome.csi')
 require('puppeteer-extra-plugin-stealth/evasions/chrome.loadTimes')
