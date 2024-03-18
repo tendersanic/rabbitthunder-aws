@@ -90,7 +90,7 @@ export default async (req: any, res: any) => {
 
   // Response headers.
   res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
-  res.setHeader('Content-Type', 'image/png')
+  res.setHeader('Content-Type', 'application/json')
   // CORS
   // res.setHeader('Access-Control-Allow-Headers', '*')
   res.setHeader('Access-Control-Allow-Credentials', true)
