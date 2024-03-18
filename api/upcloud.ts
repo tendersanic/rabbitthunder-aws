@@ -70,12 +70,13 @@ export default async (req: any, res: any) => {
   await page.setExtraHTTPHeaders({ 'Referer': 'https://flixhq.to/' });
   
   const logger:string[] = [];
-  const finalResponse:{source:string,subtitle:string[]} = {source:'',subtitle:[]}
+  const finalResponse:{source:string,subtitle:string} = {source:'',subtitle:''}
   
   page.on('request', async (interceptedRequest) => {
     await (async () => {
       logger.push(interceptedRequest.url());
       if (interceptedRequest.url().includes('.m3u8')) finalResponse.source = interceptedRequest.url();
+      if (interceptedRequest.url().includes('getSources')) finalResponse.subtitle = interceptedRequest.url();
       interceptedRequest.continue();
     })();
   });
